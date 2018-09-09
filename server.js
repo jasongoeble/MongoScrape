@@ -28,23 +28,28 @@ app.get("/scrape", function(req, res)
  
     var result = {};
 
+    //setup arrays to store each component
     var storyTitle = [];
     var storyLink = [];
     var storySummary = [];
 
-    //grab every article title and link, which is tagged on slashdot as span tag  with a class of story-title
+    //grab the title and the link from the span with class story-title
+    //push the individual components into individual arrays, in the order in which they appear
     $("span.story-title").each(function(i,element)
     {
       storyTitle.push($(this).children("a").text());
       storyLink.push("http:" + $(this).children("a").attr("href"));
     });
 
+    //grab the summary from the div with class p
+    //push the elements into an array in the order in which it appears
     $("div.p").each(function(l,element)
     {
       storySummary.push($(this).children("i").text());
-
     });
 
+    //because the title, link, and summary all follow the order of the page
+    //the for loop combines them into a result object and then creates a mongodb collection
     for (x = 0; x <  storyTitle.length; x++)
     {
 
