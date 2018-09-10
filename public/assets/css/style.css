@@ -1,38 +1,47 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 *:before,
 *:after {
-  box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 /**
  * Basic Reset
  */
- 
- h1,h2,h3,h4,h5,p,a {
-  margin: 0;
-  padding: 0
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a {
+	margin: 0;
+	padding: 0;
 }
 
-img { max-width: 100% }
+img {
+	max-width: 100%;
+}
 
 html {
-  font-size: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-size: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    background-color: #333;
-    font-size: 1em;
-    line-height: 1.8;
-    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    overflow-y: auto;
-    font-weight: 400;
-    font-style: normal;
-    cursor: pointer;
+	background-color: #fff;
+	font-size: 1em;
+	line-height: 1.8;
+	font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	overflow-y: auto;
+	font-weight: 400;
+	font-style: normal;
+	cursor: pointer;
 }
 
 /**
@@ -40,30 +49,39 @@ body {
  * Use [id="wrapper"] so CSS specificity doesn't get FUBAR
  */
 
- [id="wrapper"] {
-  width: 95%;
-  height: 100%;
-  padding-left: 5%;
-  padding-right: 5%;
-  margin-left: auto;
-  margin-right: auto;
+[id="wrapper"] {
+	width: 95%;
+	height: 100%;
+	float: none;
+	padding-left: 2%;
+	padding-right: 2%;
+	margin-left: auto;
+	margin-right: auto;
 }
-  /* Clearfix for #wrapper */
+/* Clearfix for #wrapper */
 
-  [id="wrapper:before"], [id="wrapper:after"] {
-    content: " ";
-    display: table;
-  }
+[id="wrapper:before"],
+[id="wrapper:after"] {
+	content: " ";
+	display: table;
+}
 
 /* Link Styles */
 
-a,a:hover,a:visited {
-  text-decoration: none;
-  color: firebrick;
-  font-weight: 600;
-  text-decoration: underline;
+a,
+a:hover,
+a:visited {
+	text-decoration: none;
+	color: firebrick;
+	font-weight: 300;
+	text-decoration: underline;
+	font-size: 0.875rem;
 }
 
+a:before {
+	content: "Read More: ";
+	font-weight: 500;
+}
 
 /*
 -------------------------------------
@@ -72,14 +90,17 @@ a,a:hover,a:visited {
 */
 
 .primary-header {
-  /* need to see how this renders */
+	/* need to see how this renders */
 }
 
-  .primary-site-header {
-    /* check and see how this renders */
-    text-transform: capitalize;
-
-  }
+.primary-site-header {
+	/* check and see how this renders */
+	text-transform: capitalize;
+	font-size: 3rem;
+	line-height: 1;
+	color: slategray;
+	margin: 1em 0;
+}
 
 /*
 -------------------------------------
@@ -87,12 +108,72 @@ a,a:hover,a:visited {
 -------------------------------------
 */
 
+/* .app-content */
+.app-content {
+	margin: 1em auto;
+	position: relative;
+	/* We can do flexbox if you want? */
+}
+.app-content:before,
+.app-content:after {
+	display: table;
+	content: "";
+}
+
 /* #articles */
 
 [id="articles"] {
-  max-width: 75%;
-  background:#fff;
-  margin-right: 5%;
+	width: 60%;
+	background: #fff;
+	float: left;
+}
+
+.primary-site-aside,
+[id="notes"] {
+	width: 30%;
+	background: #ccc;
+	/* main need float right */
+	float: right;
+	color: #ddd;
+}
+
+/*
+-------------------------------------
+.acticles children
+-------------------------------------
+*/
+
+/* .title > returned h1 for summary title */
+.title {
+	padding: 0.175em 0.7em;
+	border-top: 0.175em solid #f44336;
+	font-size: 1.4rem;
+	color: #fafafa;
+	font-weight: 800;
+	background: #607d8b;
+	margin-top: 2em;
+}
+
+.title:first-child {
+	margin-top: 0;
+}
+
+/* .summary > returned p tag */
+.summary {
+	font-size: 0.95rem;
+	line-height: 1.8;
+	font-weight: 400;
+	color: #616161;
+	padding: 0.75em;
+	border-left: thin solid rgba(120, 144, 156, 0.28);
+}
+
+/* .summary link <a> */
+
+a {
+	display: block;
+	font-weight: 300;
+	padding: 0.75em;
 }
 
 /** 
@@ -100,59 +181,58 @@ a,a:hover,a:visited {
  * @todo update styles once js is working
  */
 
-#notes {
-  min-height: 500px;
-  background: #FFF;
-  float: left;
-  width: 20%;
+[id="notes"] {
+	min-height: 500px;
+	background: #fff;
+	width: 20%;
 }
 
+/** 
+Form Styles 
+@todo: need to view page source when the elements below are rendered.
+*/
 
-.title{
-  padding: 0.375em 0;
-  border-bottom: thin solid #616161;
-  font-size: 1.5rem;
-  color: #f44336;
-  font-weight: 600;
-  background: #607d8b;  
-
+[id="notes"] > h2 {
+	font-weight: 400;
+	font-size: 1.4rem;
+	color: #eee;
+	text-transform: capitalize;
+	font-weight: 600;
+	margin-top: 0;
+	background: #f44336;
+	text-align: center;
 }
-.summary {
-  font-size: 1rem;
-  line-height: 1.8;
-  font-weight: 400;
-  color: #616161;
-
-}
-
-
-
-
-  
-
-
-
-
-
 
 .titleinput {
-  background: PURPLE;
-  width: 100%;
-  height: 20px;
+	width: 100%;
+	height: 20px;
 }
-textarea, input 
-{
-  display: block;
-  width: 100%;
-  background-color: #FCF5C7;
+textarea,
+input {
+	margin: 1em 0;
+	outline: slategrey;
+	width: 100%;
+	font-size: 0.55rem;
+	line-height: 1.6;
+	padding: 0.175em;
 }
-input 
-{
-  height: 36px;
-  font-size: 24px;
+input {
+	height: 36px;
+	font-size: 24px;
+	border: thin solid slategrey;
 }
-textarea 
-{
-  height: 200px;
-  font-size: 18px;
+textarea {
+	height: 200px;
+	font-size: 18px;
+	width: 100%;
 }
+
+button {
+	background: slategray;
+	font-size: 1rem;
+	padding: 0.75em;
+	color: #eee;
+	cursor: pointer;
+	float: right;
+}
+
